@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 body {
-    background: url(../images/bg.gif);
+    background: url(../index_files/bg.gif);
     margin: 0;
     padding: 0;
     height: 100%;
@@ -46,7 +46,7 @@ a:hover {
     height: auto !important; /* real browsers */
     height: 100%; /* IE6: treaded as min-height*/
     min-height: 100%; /* real browsers */
-    background: #ffffff url("../images/logos/logo.png") bottom right no-repeat;
+    background: #ffffff url("../index_files/logo.png") bottom right no-repeat;
 }
 
 img {
@@ -115,7 +115,7 @@ div.clear hr {
     float: left;
     margin: 1.5em 0.5em;
     padding: 0em;
-    background: #EAEAEA url("../images/logos/logo-small.png") top right no-repeat;
+    background: #EAEAEA url("../index_files/logos/logo-small.png") top right no-repeat;
 }
 
 #bodyColumn {
@@ -150,11 +150,11 @@ div.clear hr {
 }
 
 #navcolumn li.expanded {
-    background: url("../images/collapsed.png") no-repeat left top;
+    background: url("../index_files/collapsed.png") no-repeat left top;
 }
 
 #navcolumn li.collapsed {
-    background: url("../images/expanded.png") no-repeat left top;
+    background: url("../index_files/expanded.png") no-repeat left top;
 }
 
 #poweredBy {
@@ -217,7 +217,7 @@ div.clear hr {
     color: #FFFFFF;
     width: 100%;
     height: 31px;
-    background: url("../images/bg_menu.gif") top left repeat-x;
+    background: url("../index_files/bg_menu.gif") top left repeat-x;
     font-weight: bold;
     padding-top: 10px;
 }
