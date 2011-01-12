@@ -16,19 +16,18 @@ jQuery.fn.loadRepositories = function(username) {
         var list = $('<ul/>');
         target.empty().append(list);
         $(repos).each(function() {
-            var hasSite = false;
-            try {
-				//Dirty but effective ;-)
-                $.getJSON('http://sourcesense.github.com/' + this.name + '/index.html?callback=?');
-                hasSite = true;
-            } catch(err) {
-                hasSite = false;
-            }
-            if (hasSite) {
-                list.append('<li><a href="http://sourcesense.github.com/' + this.name + '">' + this.name + '</a></li>');
-            } else {
-                list.append('<li><a href="' + this.url + '">' + this.name + '</a></li>');
-            }
+            var name = this.name;
+            var url = this.url;
+            $.jsonp({
+                "url": "http://sourcesense.github.com/" + name + "/index.html?callback=?",
+                "data": {},
+                "success": function(data) {
+                    list.append('<li><a href="http://sourcesense.github.com/' + name + '">' + name + '</a></li>');
+                },
+                "error": function(data, msg) {
+                    list.append('<li><a href="' + url + '">' + name + '</a></li>');
+                }
+            });
         });
     });
 
@@ -37,4 +36,5 @@ jQuery.fn.loadRepositories = function(username) {
             return b.watchers - a.watchers;
         });
     }
+
 };
