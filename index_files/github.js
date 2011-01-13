@@ -18,20 +18,17 @@ jQuery.fn.loadRepositories = function(username) {
         $(repos).each(function() {
             var name = this.name;
             var url = this.url;
-
-            $.jsonp({
-                "url": "http://sourcesense.github.com/" + name + "/index.html?callback=?",
-                "data": {},
-                "success": function(data) {
-	                list.append('<li><a href="http://sourcesense.github.com/' + name + '">' + name + '</a></li>');
-                },
-                "error": function(data, msg) {
-                    list.append('<li><a href="' + url + '">' + name + '</a></li>');
-                }
-            });
+            var x = new Image();
+            x.onload = function() {
+                list.append('<li><a href="http://sourcesense.github.com/' + name + '">' + name + '</a></li>');
+            }; 
+            x.onerror = function() {
+                list.append('<li><a href="' + url + '">' + name + '</a></li>');
+            };
+            x.src = "http://sourcesense.github.com/" + name + "/images/logos/maven-feather.png";
         });
     });
-	
+
     function sortByNumberOfWatchers(repos) {
         repos.sort(function(a, b) {
             return b.watchers - a.watchers;
