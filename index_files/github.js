@@ -1,9 +1,14 @@
+/**
+  * Maurizio Pillitu - m.pillitu@sourcesense.com
+  * Amsterdam, 13/01/2011
+  * 
+  * This script has been copied by Andrew Davey - http://aboutcode.net/2010/11/11/list-github-projects-using-javascript.html
+  * From line 23 to 35 I've introduced a additional check to see if any site has been published for that specific project; 
+  * the way it checks is by verifiyng the presence of an image (dirty, but effective); tried $ajax, $get, $getJSON $jsonp, 
+  * but none of them worked out
+**/
 jQuery.githubUser = function(username, callback) {
     jQuery.getJSON("http://github.com/api/v1/json/" + username + "?callback=?", callback);
-}
-
-jQuery.githubBranches = function(username, repo, callback) {
-    jQuery.getJSON("http://github.com/api/v2/json/" + username + "/" + repo + "/branches?callback=?", callback);
 }
 
 jQuery.fn.loadRepositories = function(username) {
