@@ -16,16 +16,18 @@ jQuery.fn.loadRepositories = function(username) {
         var list = $('<ul/>');
         target.empty().append(list);
         $(repos).each(function() {
-            var name = this.name;
-            var url = this.url;
-            var x = new Image();
-            x.onload = function() {
-                list.append('<li><a href="http://sourcesense.github.com/' + name + '">' + name + '</a></li>');
-            }; 
-            x.onerror = function() {
-                list.append('<li><a href="' + url + '">' + name + '</a></li>');
-            };
-            x.src = "http://sourcesense.github.com/" + name + "/images/logos/maven-feather.png";
+            if (this.name != "sourcesense.github.com") {
+                var name = this.name;
+                var url = this.url;
+                var x = new Image();
+                x.onload = function() {
+                    list.append('<li><a href="http://sourcesense.github.com/' + name + '">' + name + '</a></li>');
+                }; 
+                x.onerror = function() {
+                    list.append('<li><a href="' + url + '">' + name + '</a></li>');
+                };
+                x.src = "http://sourcesense.github.com/" + name + "/images/logos/maven-feather.png";
+            }
         });
     });
 
