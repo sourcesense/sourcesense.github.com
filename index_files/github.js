@@ -8,7 +8,7 @@
   * but none of them worked out
 **/
 jQuery.githubUser = function(username, callback) {
-    jQuery.getJSON("http://github.com/api/v1/json/" + username + "?callback=?", callback);
+    jQuery.getJSON("https://api.github.com/users/" + username + "/repos?callback=?", callback);
 }
 
 jQuery.fn.loadRepositories = function(username) {
@@ -16,7 +16,7 @@ jQuery.fn.loadRepositories = function(username) {
     var target = this;
     $.githubUser(username,
     function(data) {
-        var repos = data.user.repositories;
+        var repos = data.data;
         sortByNumberOfWatchers(repos);
         var list = $('<ul/>');
         target.empty().append(list);
@@ -29,7 +29,7 @@ jQuery.fn.loadRepositories = function(username) {
                     list.append('<li><a href="http://sourcesense.github.com/' + name + '">' + name + '</a></li>');
                 }; 
                 x.onerror = function() {
-                    list.append('<li><a href="' + url + '">' + name + '</a></li>');
+                    list.append('<li><a href="http://github.com/' + username + '/' + name + '">' + name + '</a></li>');
                 };
                 x.src = "http://sourcesense.github.com/" + name + "/images/logos/maven-feather.png";
             }
